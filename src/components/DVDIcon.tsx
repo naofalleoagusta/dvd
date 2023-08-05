@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import generateColor from "../helpers/generateColor";
 import getInitialPosition from "../helpers/getInitialPosition";
+import getDisplaySize from "../helpers/getDisplaySize";
 
 type TCoordinate = { x: number; y: number };
 
@@ -38,10 +39,7 @@ const DVDIcon = () => {
   }, [deficit.x, deficit.y]);
 
   useEffect(() => {
-    const el = document.getElementById("root");
-    const maxY = (el?.offsetHeight || 0) - 80;
-    const maxX = (el?.offsetWidth || 0) - 187;
-
+    const { maxX, maxY } = getDisplaySize();
     if (position.x >= maxX) {
       setDeficit((prev) => ({ ...prev, x: -1 }));
       setColor(generateColor());
