@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import generateColor from "../helpers/generateColor";
+import getInitialPosition from "../helpers/getInitialPosition";
 
 type TCoordinate = { x: number; y: number };
 
 const DVDIcon = () => {
-  const [position, setPosition] = useState<TCoordinate>({
-    x: 0,
-    y: 0,
-  });
+  const [position, setPosition] = useState<TCoordinate>(getInitialPosition());
 
   const [deficit, setDeficit] = useState<TCoordinate>({
     x: 1,
